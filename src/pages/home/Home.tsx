@@ -5,23 +5,15 @@ import { useInitial } from '../../hooks/liff';
 import './Home.css';
 
 const Home = () => {
-    const { isLoggedIn } = useInitial();
+  const { isLoggedIn } = useInitial();
 
-    const spinner = () => <Spinner animation="border" variant="primary" />;
+  const spinner = () => <Spinner animation="border" variant="primary" />;
 
-    const content = () => (
-        <>
-            {`Home isLoggedIn: ${isLoggedIn}`}
-        </>
-    )
+  const content = () => <>{`Home isLoggedIn: ${isLoggedIn}`}</>;
 
-    const showContent = () => isLoggedIn ? content() : spinner();
+  const showContent = () => (isLoggedIn ? content() : spinner());
 
-    return (
-        <div className="Home">
-            {showContent()}
-        </div>
-    );
-}
+  return <div className="Home">{showContent()}</div>;
+};
 
 export default Home;
