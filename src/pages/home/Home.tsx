@@ -1,15 +1,18 @@
 import React from 'react';
 import { Spinner } from 'react-bootstrap';
 
-import { useInitial } from '../../hooks/liff';
+import { useInitial, useGetAccessToken } from '../../hooks/liff';
 import './Home.css';
 
 const Home = () => {
   const { isLoggedIn } = useInitial();
+  const { lineAccessToken } = useGetAccessToken(isLoggedIn);
 
   const spinner = () => <Spinner animation="border" variant="primary" />;
 
-  const content = () => <>{`Home isLoggedIn: ${isLoggedIn}`}</>;
+  const content = () => (
+    <>{`Home isLoggedIn: ${isLoggedIn} ${lineAccessToken}`}</>
+  );
 
   const showContent = () => (isLoggedIn ? content() : spinner());
 

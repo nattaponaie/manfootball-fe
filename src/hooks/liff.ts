@@ -6,7 +6,7 @@ type UseInitialType = {
   setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const useInitial = ():UseInitialType => {
+const useInitial = (): UseInitialType => {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
 
   useEffect(() => {
@@ -25,4 +25,26 @@ const useInitial = ():UseInitialType => {
   };
 };
 
-export { useInitial };
+type UseGetAccessTokenType = {
+  lineAccessToken: string;
+  setLineAccessToken: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const useGetAccessToken = (isLoggedIn: boolean): UseGetAccessTokenType => {
+  const [lineAccessToken, setLineAccessToken] = useState<string>('');
+  useEffect(() => {
+    if (!isLoggedIn) return;
+
+    const accessToken = liff.getAccessToken();
+    if (accessToken) {
+      setLineAccessToken(accessToken);
+    }
+  }, [isLoggedIn])
+
+  return {
+    lineAccessToken,
+    setLineAccessToken
+  }
+}
+
+export { useInitial, useGetAccessToken };
