@@ -1,4 +1,4 @@
-# New Project
+# Manman Football React
 
 > ✨ Bootstrapped with Create Snowpack App (CSA).
 
