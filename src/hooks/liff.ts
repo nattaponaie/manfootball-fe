@@ -1,8 +1,13 @@
 import { useState, useEffect } from 'react';
 import liff from '@line/liff';
 
-const useInitial = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+type UseInitialType = {
+  isLoggedIn: boolean;
+  setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const useInitial = ():UseInitialType => {
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
 
   useEffect(() => {
     liff.init({ liffId: import.meta.env.SNOWPACK_PUBLIC_LIFF_ID }).then(() => {
@@ -16,6 +21,7 @@ const useInitial = () => {
 
   return {
     isLoggedIn,
+    setIsLoggedIn,
   };
 };
 
