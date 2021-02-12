@@ -6,7 +6,7 @@ const useInitial = () => {
 
     useEffect(() => {
         liff
-            .init({ liffId: '1655665542-QEDV0349' })
+            .init({ liffId: import.meta.env.SNOWPACK_PUBLIC_LIFF_ID })
             .then(() => {
                 if (!liff.isLoggedIn()) {
                     liff.login()

@@ -1,8 +1,13 @@
 /** @type {import("snowpack").SnowpackUserConfig } */
 module.exports = {
   mount: {
-    public: {url: '/', static: true},
-    src: {url: '/dist'},
+    public: {
+      url: '/',
+      static: true
+    },
+    src: {
+      url: '/dist'
+    },
   },
   plugins: [
     '@snowpack/plugin-react-refresh',
@@ -16,6 +21,8 @@ module.exports = {
   optimize: {
     /* Example: Bundle your final build: */
     // "bundle": true,
+    bundle: true,
+    minify: true,
   },
   packageOptions: {
     /* ... */
@@ -25,5 +32,6 @@ module.exports = {
   },
   buildOptions: {
     /* ... */
+    sourcemap: true
   },
 };
