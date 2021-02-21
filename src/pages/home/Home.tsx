@@ -1,17 +1,24 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import { Spinner } from 'react-bootstrap';
 
-import { useInitial, useGetAccessToken } from '../../hooks/liff';
+import { LineProps } from '../../LineAuth';
 import './Home.css';
 
-const Home = () => {
-  const { isLoggedIn } = useInitial();
-  const { lineAccessToken } = useGetAccessToken(isLoggedIn);
+export interface HomeProps {
+  lineAuth: LineProps;
+};
 
+const Home: FunctionComponent<HomeProps> = ({
+  lineAuth: {
+    isLoggedIn
+  }
+}: HomeProps) => {
   const spinner = () => <Spinner animation="border" variant="primary" />;
 
   const content = () => (
-    <>{`Home isLoggedIn: ${isLoggedIn} ${lineAccessToken}`}</>
+    <>
+      {`Home isLoggedIn: ${isLoggedIn}`}
+    </>
   );
 
   const showContent = () => (isLoggedIn ? content() : spinner());

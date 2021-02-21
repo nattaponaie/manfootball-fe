@@ -23,7 +23,8 @@
     "allowSyntheticDefaultImports": true,
     "types": [
       "liff-type",
-      "jest"
+      "jest",
+      "react-router-dom"
     ]
   }
 }
