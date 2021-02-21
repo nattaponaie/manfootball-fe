@@ -11,7 +11,7 @@ const Profile: FunctionComponent<ProfileProps> = (props: ProfileProps) => {
   
   return (
     <>
-      Profile {props.lineAuth.isLoggedIn}
+      Profile {props.lineAuth.profile?.displayName}
     </>
   )
 }

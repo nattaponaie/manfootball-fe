@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useQuery } from 'react-query';
 import liff from '@line/liff';
 
 type UseInitialType = {
@@ -47,4 +48,28 @@ const useGetAccessToken = (isLoggedIn: boolean): UseGetAccessTokenType => {
   }
 }
 
-export { useInitial, useGetAccessToken };
+export type ProfileType = {
+  userId: string;
+  displayName: string;
+  pictureUrl?: string;
+  statusMessage?: string;
+}
+
+const useGetProfile = (isLoggedIn: boolean) => {
+  const fetchData = async (): Promise<ProfileType> => {
+    if (!isLoggedIn) throw undefined;
+
+    const profileResult = await liff.getProfile();
+    const profile: ProfileType = {
+      userId: profileResult.userId,
+      displayName: profileResult.displayName,
+      pictureUrl: profileResult.pictureUrl,
+      statusMessage: profileResult.statusMessage
+    }
+    return profile;
+  }
+
+  return useQuery(['getLineProfile', isLoggedIn], () => fetchData());
+}
+
+export { useInitial, useGetAccessToken, useGetProfile };
