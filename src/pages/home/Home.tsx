@@ -1,5 +1,4 @@
 import React, { FunctionComponent } from 'react';
-import { Spinner } from 'react-bootstrap';
 
 import { LineProps } from '../../LineAuth';
 import './Home.css';
@@ -13,17 +12,9 @@ const Home: FunctionComponent<HomeProps> = ({
     isLoggedIn
   }
 }: HomeProps) => {
-  const spinner = () => <Spinner animation="border" variant="primary" />;
-
-  const content = () => (
-    <>
+  return <div className="Home">
       {`Home isLoggedIn: ${isLoggedIn}`}
-    </>
-  );
-
-  const showContent = () => (isLoggedIn ? content() : spinner());
-
-  return <div className="Home">{showContent()}</div>;
+    </div>;
 };
 
 export default Home;

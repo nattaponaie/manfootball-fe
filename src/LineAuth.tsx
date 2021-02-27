@@ -32,10 +32,10 @@ const LineAuth: FunctionComponent<LineAuthProps> = ({ pageComponent: Component, 
   const content = () => (
     <>
       <NavbarComponent />
-      {<Component lineAuth={line} />}
+      <Component lineAuth={line} />
     </>
   );
-  const renderChildren = () => profile.isLoading ? spinner() : content();
+  const renderChildren = () => profile.isLoading || !isLoggedIn ? spinner() : content();
 
   return renderChildren();
 };
