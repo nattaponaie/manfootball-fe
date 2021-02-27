@@ -20,7 +20,7 @@ const App = () => {
         <BrowserRouter>
           <Switch>
             <QueryClientProvider client={queryClient}>
-              {import.meta.env.SNOWPACK_PUBLIC_OPEN_REACT_QUERY_DEV_TOOL && <ReactQueryDevtools initialIsOpen={true} /> }
+              {import.meta.env.SNOWPACK_PUBLIC_OPEN_REACT_QUERY_DEV_TOOL === true && <ReactQueryDevtools initialIsOpen={false} />}
               <Route exact path="/" component={() => <LineAuth pageComponent={HomePage} />} />
               <Route exact path="/profile" component={() => <LineAuth pageComponent={ProfilePage} />} />
             </QueryClientProvider>
